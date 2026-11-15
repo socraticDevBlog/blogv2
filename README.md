@@ -21,18 +21,18 @@ following the same specifications as the English blog's rebuild
 nvm use            # reads .nvmrc -> Node 26
 npm ci             # install from lockfile
 npm run dev        # dev server
-npm run build      # static build -> dist/ (107 pages)
+npm run build      # static build -> dist/ (127 pages)
 npm run preview    # serve dist/
 ```
 
 ## What's inside
 
-- **149 legacy posts** copied from the old site (`../jamstackBlog/src/pages/posts`),
+- **153 legacy posts** copied from the old site (`../jamstackBlog/src/pages/posts`),
   served as pages via a **GraphQL layer** (`src/lib/graphql.ts`) that mirrors the
   old `gatsby-node.js` query: `allPosts(filter: { is_archived: false }, sort: DESC)`
-  — 78 archived posts are excluded everywhere (listings, tag pages, single pages, RSS),
-  leaving 71 published posts.
-- **Home page** = 10 latest posts as cards + pagination at `/page/2..8`
+  — 66 archived posts are excluded everywhere (listings, tag pages, single pages, RSS),
+  leaving 87 published posts.
+- **Home page** = 10 latest posts as cards + pagination at `/page/2..9`
   (same UX as the original; the old site's `postsPerPage` was federated to 10,
   matching its home-page `limit: 10`).
 - **Post pages** `/posts/<slug>/` — image on top, full content width, before the title.
@@ -57,7 +57,7 @@ npm run preview    # serve dist/
 
 ## Routes
 
-`/` · `/page/2..8` · `/posts/` · `/posts/<slug>/` (71) · `/tags/` · `/tag/<slug>/` (23) ·
+`/` · `/page/2..9` · `/posts/` · `/posts/<slug>/` (87) · `/tags/` · `/tag/<slug>/` (26) ·
 `/about/` · `/avis/` · `/404.html` · `/rss.xml` · `/images/*` · `/favicon.svg`
 
 ## Config highlights (`astro.config.mjs`)
