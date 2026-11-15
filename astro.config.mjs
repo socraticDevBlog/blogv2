@@ -7,9 +7,11 @@ export default defineConfig({
     starlight({
       title: 'blogue de socraticDev',
       description: 'Technologie et philosophie',
-      defaultLocale: 'fr',
+      // `root` locale: the site is served at "/" (no /fr prefix), with
+      // <html lang="fr"> — a named 'fr' defaultLocale would make Starlight
+      // link the header logo to "/fr", which does not exist here.
       locales: {
-        fr: { label: 'Français' },
+        root: { label: 'Français', lang: 'fr' },
       },
       logo: {
         src: './src/assets/banner.svg',
