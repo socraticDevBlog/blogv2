@@ -10,13 +10,13 @@ export function formatDateFr(iso: string, withWeekday = false): string {
   );
 }
 
-// Title suffix with the datetime range of a page of posts (sorted DESC):
-// first = latest, last = oldest. e.g. " — du 28 février 2026 au 25 janvier 2026".
+// Title with the datetime range of a page of posts (sorted DESC):
+// first = latest, last = oldest. e.g. "du 28 février 2026 au 15 janvier 2024".
 export function dateRangeTitle(posts: { frontmatter: { date: string } }[]): string {
   if (posts.length === 0) return '';
   const first = posts[0].frontmatter.date;
   const last = posts[posts.length - 1].frontmatter.date;
   return first === last
-    ? ` — le ${formatDateFr(first)}`
-    : ` — du ${formatDateFr(first)} au ${formatDateFr(last)}`;
+    ? `le ${formatDateFr(first)}`
+    : `du ${formatDateFr(first)} au ${formatDateFr(last)}`;
 }

@@ -75,7 +75,9 @@ const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
 const posts = result.data!.page;
 
 const site = Astro.site ?? new URL('https://socratic.dev');
-const title = `${total} post${total > 1 ? 's' : ''} sur le sujet « ${tagName} » — page ${currentPage} sur ${pageCount}${dateRangeTitle(posts)}`;
+const title =
+  dateRangeTitle(posts) ||
+  `${total} post${total > 1 ? 's' : ''} sur le sujet « ${tagName} » — page ${currentPage} sur ${pageCount}`;
 const description = `Posts sur le sujet « ${tagName} », du plus récent au plus ancien.`;
 ---
 

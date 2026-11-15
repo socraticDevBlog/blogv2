@@ -55,9 +55,9 @@ const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
 const posts = result.data!.page;
 
 const site = Astro.site ?? new URL('https://socratic.dev');
-// Same page header as the old site's src/templates/tag-posts.js, plus the
-// datetime range of the posts on this page (latest → oldest).
-const title = `${total} post${total > 1 ? 's' : ''} sur le sujet « ${tagName} »${dateRangeTitle(posts)}`;
+// Title is the datetime range of the posts on this page (latest → oldest).
+const title =
+  dateRangeTitle(posts) || `${total} post${total > 1 ? 's' : ''} sur le sujet « ${tagName} »`;
 const description = `Posts sur le sujet « ${tagName} », du plus récent au plus ancien.`;
 ---
 

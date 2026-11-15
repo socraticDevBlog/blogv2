@@ -57,8 +57,8 @@ const pageCount = pageCountOf(total);
 const posts = result.data!.page;
 
 const site = Astro.site ?? new URL('https://socratic.dev');
-// Title carries the datetime range of the posts on this page (latest → oldest).
-const title = `Page ${currentPage} sur ${pageCount}${dateRangeTitle(posts)}`;
+// Title is the datetime range of the posts on this page (latest → oldest).
+const title = dateRangeTitle(posts) || `Page ${currentPage} sur ${pageCount}`;
 const description = 'Blogue de socraticDev — technologie et philosophie, du plus récent au plus ancien.';
 ---
 
