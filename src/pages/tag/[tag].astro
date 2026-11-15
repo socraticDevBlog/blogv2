@@ -4,6 +4,7 @@ import PostGrid from '../../components/PostGrid.astro';
 import PageLinks from '../../components/PageLinks.astro';
 import { queryPosts } from '../../lib/graphql';
 import { defaultOgImage, socialImageHead } from '../../lib/head';
+import { dateRangeTitle } from '../../lib/dates';
 
 // Like the old site's /tag/<slug> pages (gatsby-node.js): one listing per tag,
 // newest first, now in a 3-per-row grid of 30 posts per page. Pages 2..N are
@@ -54,8 +55,9 @@ const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
 const posts = result.data!.page;
 
 const site = Astro.site ?? new URL('https://socratic.dev');
-// Same page header as the old site's src/templates/tag-posts.js
-const title = `${total} post${total > 1 ? 's' : ''} sur le sujet « ${tagName} »`;
+// Same page header as the old site's src/templates/tag-posts.js, plus the
+// datetime range of the posts on this page (latest → oldest).
+const title = `${total} post${total > 1 ? 's' : ''} sur le sujet « ${tagName} »${dateRangeTitle(posts)}`;
 const description = `Posts sur le sujet « ${tagName} », du plus récent au plus ancien.`;
 ---
 

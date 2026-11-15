@@ -4,6 +4,7 @@ import PostGrid from '../../../components/PostGrid.astro';
 import PageLinks from '../../../components/PageLinks.astro';
 import { queryPosts } from '../../../lib/graphql';
 import { defaultOgImage, socialImageHead } from '../../../lib/head';
+import { dateRangeTitle } from '../../../lib/dates';
 
 // Pages 2..N of the all-posts listing (/posts/page/N), 30 per page.
 const PER_PAGE = 30;
@@ -49,7 +50,7 @@ const pageCount = Math.max(1, Math.ceil(total / PER_PAGE));
 const posts = result.data!.page;
 
 const site = Astro.site ?? new URL('https://socratic.dev');
-const title = `Tous les posts — page ${currentPage} sur ${pageCount}`;
+const title = `Tous les posts — page ${currentPage} sur ${pageCount}${dateRangeTitle(posts)}`;
 const description = 'Tous les posts du blogue, du plus récent au plus ancien.';
 ---
 
