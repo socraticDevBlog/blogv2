@@ -21,7 +21,7 @@ following the same specifications as the English blog's rebuild
 nvm use            # reads .nvmrc -> Node 26
 npm ci             # install from lockfile
 npm run dev        # dev server
-npm run build      # static build -> dist/ (127 pages)
+npm run build      # static build -> dist/ (125 pages)
 npm run preview    # serve dist/
 ```
 
@@ -32,9 +32,13 @@ npm run preview    # serve dist/
   old `gatsby-node.js` query: `allPosts(filter: { is_archived: false }, sort: DESC)`
   — 66 archived posts are excluded everywhere (listings, tag pages, single pages, RSS),
   leaving 87 published posts.
-- **Home page** = 10 latest posts as cards + pagination at `/page/2..9`
-  (same UX as the original; the old site's `postsPerPage` was federated to 10,
-  matching its home-page `limit: 10`).
+- **Home page** `/` = 10 latest posts as full-width cards (unchanged design) +
+  pagination at `/page/2..N`.
+- **All other listing pages** — `/page/N`, `/posts/` (+ `/posts/page/N`) and
+  `/tag/<slug>/` (+ `/tag/<slug>/page/N`) — show posts in a **3-per-row grid**
+  (2 columns ≤1024px, 1 column ≤640px) of compact cards, **30 posts per page**
+  (3× the home page). Home keeps 10; `/page/2` starts right after it, so no
+  post appears twice.
 - **Post pages** `/posts/<slug>/` — image on top, full content width, before the title.
   Slugs come from the old site's accent-stripping `slugify` (`src/lib/slugify.ts`).
 - **Tags**: `/tags/` index + `/tag/<slug>/` filtered listings (clickable pills), date-DESC.
@@ -57,8 +61,9 @@ npm run preview    # serve dist/
 
 ## Routes
 
-`/` · `/page/2..9` · `/posts/` · `/posts/<slug>/` (87) · `/tags/` · `/tag/<slug>/` (26) ·
-`/about/` · `/avis/` · `/404.html` · `/rss.xml` · `/images/*` · `/favicon.svg`
+`/` · `/page/2..4` · `/posts/` + `/posts/page/2..3` · `/posts/<slug>/` (87) · `/tags/` ·
+`/tag/<slug>/` (26, + `/tag/croissance/page/2`) · `/about/` · `/avis/` · `/404.html` ·
+`/rss.xml` · `/images/*` · `/favicon.svg`
 
 ## Config highlights (`astro.config.mjs`)
 
