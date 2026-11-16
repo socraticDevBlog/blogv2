@@ -45,9 +45,8 @@ const dateFr = new Date(`${fm.date}T00:00:00`).toLocaleDateString('fr-CA', {
   month: 'long',
   year: 'numeric',
 });
-const tagline = [dateFr, fm.author ? `par ${fm.author}` : '', fm.tags?.length ? fm.tags.join(', ') : '']
-  .filter(Boolean)
-  .join(' — ');
+// Tags are omitted from the tagline: they already render as clickable pills below.
+const tagline = [dateFr, fm.author ? `par ${fm.author}` : ''].filter(Boolean).join(' — ');
 const hero = {
   ...(fm.image ? { image: { html: `<img src="${fm.image}" alt="${fm.title}" />` } } : {}),
   tagline,
