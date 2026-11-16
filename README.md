@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2e7ec91d-051e-4d84-861d-cb6cb0f67fec/deploy-status)](https://app.netlify.com/projects/socdevblogv2/deploys)
+
 # blogue de socraticDev — blogv2
 
 A rebuild of the Gatsby blog (`jamstackBlog`) as a minimal, single-theme
