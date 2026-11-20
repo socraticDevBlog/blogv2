@@ -1,9 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content';
 import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
-import { queryPosts } from '../../lib/graphql';
-import { slugify } from '../../lib/slugify';
-import { defaultOgImage, socialImageHead } from '../../lib/head';
+import { queryPosts } from '../lib/graphql';
+import { slugify } from '../lib/slugify';
+import { defaultOgImage, socialImageHead } from '../lib/head';
 
 export async function getStaticPaths() {
   const result = await queryPosts(`

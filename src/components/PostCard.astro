@@ -5,7 +5,7 @@ import { slugify } from '../lib/slugify';
 // The home page keeps the full-size, single-column cards.
 const { post, compact = false } = Astro.props;
 const fm = post.frontmatter;
-const href = `/posts/${post.slug}/`;
+const href = `/${post.slug}/`;
 // Same rendering as the old site (date(formatString: "dddd Do MMMM YYYY", locale: "fr"))
 const dateFr = new Date(`${fm.date}T00:00:00`).toLocaleDateString('fr-CA', {
   weekday: 'long',
